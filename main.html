@@ -1,5 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,11 +31,7 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
-        background: radial-gradient(
-          ellipse at bottom,
-          #1b2735 0%,
-          #090a0f 100%
-        );
+        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
         color: #fff;
         overflow: hidden;
         position: relative;
@@ -64,21 +61,24 @@
 
       .card {
         position: relative;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 32px;
-        backdrop-filter: blur(25px);
-        padding: 60px 50px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 36px;
+        backdrop-filter: blur(30px);
+        padding: 60px 40px;
         text-align: center;
         max-width: 720px;
+        width: 90%;
         z-index: 1;
-        box-shadow: 0 0 60px rgba(0, 255, 224, 0.12);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 60px rgba(0, 255, 224, 0.15),
+                    0 0 15px rgba(0, 255, 224, 0.06) inset;
+        transition: all 0.3s ease-in-out;
       }
 
       .card:hover {
         transform: scale(1.02);
-        box-shadow: 0 0 80px rgba(0, 255, 224, 0.2);
+        box-shadow: 0 0 80px rgba(0, 255, 224, 0.25),
+                    0 0 20px rgba(0, 255, 224, 0.1) inset;
       }
 
       h1 {
@@ -92,7 +92,7 @@
       .typing-text {
         font-size: 1.25rem;
         color: var(--text-muted);
-        margin-bottom: 40px;
+        margin-bottom: 32px;
         line-height: 1.6;
         font-weight: 400;
         min-height: 2.5em;
@@ -112,7 +112,9 @@
         transition: all 0.3s ease;
         box-shadow: 0 0 10px rgba(0, 255, 224, 0.3);
         transform: translateY(0);
-        margin: 10px;
+        margin: 14px auto;
+        display: inline-block;
+        min-width: 220px;
       }
 
       .glow-btn::before {
@@ -146,11 +148,7 @@
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(0, 255, 224, 0.1) 0%,
-          transparent 80%
-        );
+        background: radial-gradient(circle, rgba(0, 255, 224, 0.1) 0%, transparent 80%);
         animation: pulse 2.5s infinite;
         z-index: -1;
       }
@@ -174,12 +172,15 @@
         .card {
           padding: 40px 30px;
         }
+
         h1 {
           font-size: 2.2rem;
         }
+
         .typing-text {
           font-size: 1.1rem;
         }
+
         .glow-btn {
           font-size: 1rem;
           padding: 14px 36px;
@@ -187,32 +188,20 @@
       }
     </style>
   </head>
+
   <body>
     <div class="card">
       <div class="pulse-ring"></div>
       <h1>🚀 Launch Portal</h1>
       <p class="typing-text" id="typedText">Loading text...</p>
 
-      <button
-        class="glow-btn"
-        onclick="openEmbedded('https://jumpman64.glitch.me/')"
-      >
-        Jumpman64
-      </button>
-      <br />
-      <button
-        class="glow-btn"
-        onclick="openEmbedded('https://jumpman64beta.glitch.me/')"
-      >
-        Jumpman64 Beta
-      </button>
-      <br />
-      <button
-        class="glow-btn"
-        onclick="openEmbedded('https://nextpage2.glitch.me/')"
-      >
-        Next Page
-      </button>
+      <button class="glow-btn" onclick="openEmbedded('https://jumpman64.glitch.me/')">Jumpman64</button>
+      <button class="glow-btn" onclick="openEmbedded('https://jumpman64beta.glitch.me/')">Jumpman64 Beta</button>
+      <button class="glow-btn" onclick="openEmbedded('https://nextpage2.glitch.me/')">Next Page</button>
+
+      <!-- New "View All" button -->
+      <button class="glow-btn" onclick="openEmbedded('https://traff.co/6n7qo9a0')">View All Messages</button>
+
     </div>
 
     <script>
@@ -262,33 +251,34 @@
         typeMessage(message);
       }
 
+      // Function to open a link in a new blank window (like the others)
       function openEmbedded(url) {
         const newWin = window.open("", "_blank");
         if (newWin) {
           const iframeHTML = `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <title>Home</title>
-              <link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png" type="image/png">
-              <style>
-                html, body {
-                  margin: 0;
-                  padding: 0;
-                  height: 100%;
-                  background-color: #0e0e0e;
-                }
-                iframe {
-                  width: 100%;
-                  height: 100%;
-                  border: none;
-                }
-              </style>
-            </head>
-            <body>
-              <iframe src="${url}"></iframe>
-            </body>
-          </html>`;
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>Home</title>
+                <link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png" type="image/png">
+                <style>
+                  html, body {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    background-color: #0e0e0e;
+                  }
+                  iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                  }
+                </style>
+              </head>
+              <body>
+                <iframe src="${url}"></iframe>
+              </body>
+            </html>`;
           newWin.document.open();
           newWin.document.write(iframeHTML);
           newWin.document.close();
